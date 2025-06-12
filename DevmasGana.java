@@ -1,80 +1,60 @@
 import java.util.*;
-
-class Animal {
-    private String nombre;
-    private String tipo;
-    private String genero;
-
-    public Animal(String nombre, String tipo, String genero) {
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.genero = genero;
-    }
-
-    // Getters y setters
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public String getTipo() { return tipo; }
-    public void setTipo(String tipo) { this.tipo = tipo; }
-    public String getGenero() { return genero; }
-    public void setGenero(String genero) { this.genero = genero; }
-
-    @Override
-    public String toString() {
-        return nombre;
-    }
-}
+import java.util.stream.*;
 
 public class Principal {
-    private Map<String, List<Animal>> clasificacion;
-    private List<Animal> animales;
-
-    public Principal() {
-        clasificacion = new TreeMap<>();
-        animales = new ArrayList<>();
-    }
-
-    public void ejecutar() {
+    public static void main(String[] args) {
+        List<Persona> personas = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        String continuar;
 
-        do {
-            System.out.print("Ingrese el nombre del animal: ");
-            String nombre = scanner.nextLine();
+        // Existing code for input...
 
-            System.out.print("Ingrese el tipo (terrestre/aéreo/acuático): ");
-            String tipo = scanner.nextLine().toLowerCase();
+        // Create masGana attribute of type Optional<Persona>
+        Optional<Persona> masGana = personas.stream()
+                .filter(p -> p.getCargo().equalsIgnoreCase("desarrollador"))
+                .max(Comparator.comparingDouble(Persona::getSueldoHora));
 
-            System.out.print("Ingrese el género (masculino/femenino): ");
-            String genero = scanner.nextLine();
+        // Evaluate masGana.isPresent() and print the person's data if true
+        if (masGana.isPresent()) {
+            Persona desarrolladorMejorPagado = masGana.get();
+            System.out.println("Desarrollador que más gana por hora:");
+            System.out.println("Nombre: " + desarrolladorMejorPagado.getNombre());
+            System.out.println("Apellido: " + desarrolladorMejorPagado.getApellido());
+            System.out.println("Edad: " + desarrolladorMejorPagado.getEdad());
+            System.out.println("Género: " + desarrolladorMejorPagado.getGenero());
+            System.out.println("Sueldo por hora: import java.util.*;
+import java.util.stream.*;
 
-            Animal animal = new Animal(nombre, tipo, genero);
-            animales.add(animal);
+public class Principal {
+    public static void main(String[] args) {
+        List<Persona> personas = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
 
-            clasificacion.computeIfAbsent(tipo, k -> new ArrayList<>()).add(animal);
+        // Existing code for input...
 
-            System.out.print("¿Desea ingresar otro animal? (s/n): ");
-            continuar = scanner.nextLine();
-        } while (continuar.equalsIgnoreCase("s"));
+        // Create masGana attribute of type Optional<Persona>
+        Optional<Persona> masGana = personas.stream()
+                .filter(p -> p.getCargo().equalsIgnoreCase("desarrollador"))
+                .max(Comparator.comparingDouble(Persona::getSueldoHora));
 
-        mostrarClasificacion();
-    }
-
-    private void mostrarClasificacion() {
-        for (Map.Entry<String, List<Animal>> entry : clasificacion.entrySet()) {
-            System.out.println(capitalizarPrimeraLetra(entry.getKey()) + "s:");
-            for (Animal animal : entry.getValue()) {
-                System.out.println("    " + animal);
-            }
-            System.out.println();
+        // Evaluate masGana.isPresent() and print the person's data if true
+        if (masGana.isPresent()) {
+            Persona desarrolladorMejorPagado = masGana.get();
+            System.out.println("Desarrollador que más gana por hora:");
+            System.out.println("Nombre: " + desarrolladorMejorPagado.getNombre());
+            System.out.println("Apellido: " + desarrolladorMejorPagado.getApellido());
+            System.out.println("Edad: " + desarrolladorMejorPagado.getEdad());
+            System.out.println("Género: " + desarrolladorMejorPagado.getGenero());
+            System.out.println("Sueldo por hora: $" + desarrolladorMejorPagado.getSueldoHora());
+            System.out.println("Cargo: " + desarrolladorMejorPagado.getCargo());
+        } else {
+            System.out.println("No se encontraron desarrolladores en la lista.");
         }
     }
-
-    private String capitalizarPrimeraLetra(String str) {
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
-    }
-
-    public static void main(String[] args) {
-        new Principal().ejecutar();
+}
+quot; + desarrolladorMejorPagado.getSueldoHora());
+            System.out.println("Cargo: " + desarrolladorMejorPagado.getCargo());
+        } else {
+            System.out.println("No se encontraron desarrolladores en la lista.");
     }
 }
+
