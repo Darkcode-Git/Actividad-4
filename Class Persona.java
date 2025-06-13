@@ -97,29 +97,8 @@ public class Principal {
                 .filter(p -> p.getApellido().contains("M"))
                 .forEach(p -> System.out.println(p.getNombre() + " " + p.getApellido()));
     }
-}
-    while (true) {
-        System.out.println("Ingrese los datos de la persona (o 'fin' para terminar): ");
-        String nombre = scanner.nextLine();
-        if (nombre.equalsIgnoreCase("fin")) break;
-
-        personas.add(new Persona(nombre, scanner.nextLine(), Integer.parseInt(scanner.nextLine()),
-                scanner.nextLine(), Double.parseDouble(scanner.nextLine()), scanner.nextLine()));
     }
 
-    System.out.println("a. Cantidad de personas almacenadas: " + personas.size());
-
-    double promedioEdades = personas.stream().mapToInt(Persona::getEdad).average().orElse(0);
-    System.out.println("b. Promedio de edades: " + promedioEdades);
-
-    long mayoresDeEdad = personas.stream().filter(p -> p.getEdad() >= 18).count();
-    System.out.println("c. Cantidad de personas mayores de edad: " + mayoresDeEdad);
-
-    System.out.println("d. Personas cuyos nombres empiezan con 'A': ");
-    personas.stream().filter(p -> p.getNombre().startsWith("A"))
-            .forEach(p -> System.out.println(p.getNombre() + " " + p.getApellido()));
-
-    System.out.println("e. Personas cuyos apellidos contienen la letra 'M': ");
-    personas.stream().filter(p -> p.getApellido().contains("M"))
-            .forEach(p -> System.out.println(p.getNombre() + " " + p.getApellido()));
-}
+        
+           
+  
